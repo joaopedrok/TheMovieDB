@@ -1,0 +1,5 @@
+"configError" = "O método config não foi chamado passando todas as configurações";
+"dataError" = "Error de rede. Data não foi retornado";
+"baseURLError" = "A URL base não é uma URL válida";
+"generalError" = "Erro de chamada";
+"parseError" = "Erro de parse ao transformar o objeto da response no objeto requerido";
