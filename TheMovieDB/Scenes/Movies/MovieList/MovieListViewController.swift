@@ -7,4 +7,3 @@ final class MovieListViewController: UIViewController {
         view.backgroundColor = .red
     }
 }
-
