@@ -24,21 +24,11 @@ final class NetworkManagerSpec: QuickSpec {
         }
         
         describe("fetchData") {
-            context("when config was not called ") {
-                var resultSent: Result<ObjectMock, NetworkLayerError>?
-
-                beforeEach {
-                    sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { result in
-                        resultSent = result
-                    }
-                }
-                
-                it("has to return a failure result with the appropriate error") {
-                    if case let .failure(error) = resultSent {
-                        expect(error).to(equal(.configError))
-                    } else {
-                        fail()
-                    }
+            context("when config was not called") {
+                it("has to throw an fatalError") {
+                    expect {
+                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { _ in }
+                    }.to(throwAssertion())
                 }
             }
             
@@ -50,27 +40,19 @@ final class NetworkManagerSpec: QuickSpec {
                 }
                 
                 context("when networkConfiguration is set but baseUrl is nil") {
-                    var resultSent: Result<ObjectMock, NetworkLayerError>?
-
                     beforeEach {
                         networkAPIConfigurationStub.baseUrlTest = nil
-                        
-                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { result in
-                            resultSent = result
-                        }
                     }
                     
-                    it("has to return a failure result with the appropriate error") {
-                        if case let .failure(error) = resultSent {
-                            expect(error).to(equal(.baseURLError))
-                        } else {
-                            fail()
-                        }
+                    it("has to throw an fatalError") {
+                        expect {
+                            sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { _ in }
+                        }.to(throwAssertion())
                     }
                 }
             }
 
-            context("when networkConfiguration, baseUrl, queueAsyncExecutor, and session are all set") {
+            context("when networkConfiguration, baseUrl, queueAsyncExecutor, and session are configured") {
                 beforeEach {
                     sut.config(session: sessionMock,
                                networkConfiguration: networkAPIConfigurationStub,
@@ -89,6 +71,10 @@ final class NetworkManagerSpec: QuickSpec {
                         }
                     }
                     
+                    it("has to make the request with properly urlRequest") {
+                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                    }
+                    
                     it("has to return a success result with the approprieted object") {
                         if case let .success(object) = resultSent {
                             expect(object).toNot(beNil())
@@ -96,9 +82,17 @@ final class NetworkManagerSpec: QuickSpec {
                             fail()
                         }
                     }
+                    
+                    it("has to call execute from queueAsyncExecutor") {
+                        expect(queueAsyncExecutorSpy.executeCount).to(equal(1))
+                    }
+                    
+                    it("has to call resume from dataTask") {
+                        expect(urlSessionDataTaskSpy.resumeCount).to(equal(1))
+                    }
                 }
 
-                context("when perform the data task and call completion block with a failure result if an error occurs") {
+                context("when perform the data task and an error occurs") {
                     var resultSent: Result<ObjectMock, NetworkLayerError>?
                     
                     beforeEach {
@@ -109,16 +103,28 @@ final class NetworkManagerSpec: QuickSpec {
                         }
                     }
                     
-                    it("has to return a failure result with the appropriate error") {
+                    it("has to make the request with properly urlRequest") {
+                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                    }
+                    
+                    it("has to return a failure result with the properly error") {
                         if case let .failure(error) = resultSent {
                             expect(error).to(equal(.generalError))
                         } else {
                             fail()
                         }
                     }
+                    
+                    it("has to call execute from queueAsyncExecutor") {
+                        expect(queueAsyncExecutorSpy.executeCount).to(equal(1))
+                    }
+                    
+                    it("has to call resume from dataTask") {
+                        expect(urlSessionDataTaskSpy.resumeCount).to(equal(1))
+                    }
                 }
 
-                context("when perform the data task and call the completion block with a failure result if data is empty") {
+                context("when perform the data task and data is empty") {
                     var resultSent: Result<ObjectMock, NetworkLayerError>?
                     
                     beforeEach {
@@ -128,16 +134,28 @@ final class NetworkManagerSpec: QuickSpec {
                         }
                     }
                     
-                    it("has to return a failure result with the appropriate error") {
+                    it("has to make the request with properly urlRequest") {
+                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                    }
+                    
+                    it("has to return a failure result with the properly error") {
                         if case let .failure(error) = resultSent {
                             expect(error).to(equal(.dataError))
                         } else {
                             fail()
                         }
                     }
+                    
+                    it("has to call execute from queueAsyncExecutor") {
+                        expect(queueAsyncExecutorSpy.executeCount).to(equal(1))
+                    }
+                    
+                    it("has to call resume from dataTask") {
+                        expect(urlSessionDataTaskSpy.resumeCount).to(equal(1))
+                    }
                 }
 
-                context("when perform the data task and call the completion block with a failure result if decoding fails") {
+                context("when perform the data task and decoding fails") {
                     var resultSent: Result<ObjectMock, NetworkLayerError>?
                     beforeEach {
                         sessionMock.urlResponse = URLResponse.stub()
@@ -147,12 +165,56 @@ final class NetworkManagerSpec: QuickSpec {
                         }
                     }
                     
-                    it("has to return a failure result with the appropriate error") {
+                    it("has to make the request with properly urlRequest") {
+                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                    }
+                    
+                    it("has to return a failure result with the properly error") {
                         if case let .failure(error) = resultSent {
                             expect(error).to(equal(.parseError))
                         } else {
                             fail()
                         }
+                    }
+                    
+                    it("has to call execute from queueAsyncExecutor") {
+                        expect(queueAsyncExecutorSpy.executeCount).to(equal(1))
+                    }
+                    
+                    it("has to call resume from dataTask") {
+                        expect(urlSessionDataTaskSpy.resumeCount).to(equal(1))
+                    }
+                }
+                
+                context("when perform the data task and there is an invalid status code") {
+                    var resultSent: Result<ObjectMock, NetworkLayerError>?
+
+                    beforeEach {
+                        sessionMock.urlResponse = URLResponse.stub(statusCode: 400)
+                        sessionMock.data = "".data(using: .utf8)
+                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { result in
+                            resultSent = result
+                        }
+                    }
+                    
+                    it("has to make the request with properly urlRequest") {
+                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                    }
+                    
+                    it("has to return a failure result with the properly error") {
+                        if case let .failure(error) = resultSent {
+                            expect(error).to(equal(.invalidStatusCode(400)))
+                        } else {
+                            fail()
+                        }
+                    }
+                    
+                    it("has to call execute from queueAsyncExecutor") {
+                        expect(queueAsyncExecutorSpy.executeCount).to(equal(1))
+                    }
+                    
+                    it("has to call resume from dataTask") {
+                        expect(urlSessionDataTaskSpy.resumeCount).to(equal(1))
                     }
                 }
             }

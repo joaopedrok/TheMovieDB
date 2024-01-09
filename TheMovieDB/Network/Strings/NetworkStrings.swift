@@ -10,4 +10,5 @@ struct NetworkStrings {
     static let baseURLError = localizedString("baseURLError")
     static let generalError = localizedString("generalError")
     static let parseError = localizedString("parseError")
+    static let invalidStatusCode = localizedString("invalidStatusCode")
 }

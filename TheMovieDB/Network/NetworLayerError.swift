@@ -6,6 +6,7 @@ enum NetworkLayerError: Equatable, Error {
     case dataError
     case generalError
     case parseError
+    case invalidStatusCode(Int?)
     
     var errorMessage: String {
         switch self {
@@ -19,6 +20,8 @@ enum NetworkLayerError: Equatable, Error {
             return NetworkStrings.generalError
         case .parseError:
             return NetworkStrings.parseError
+        case .invalidStatusCode:
+            return NetworkStrings.invalidStatusCode
         }
     }
 }

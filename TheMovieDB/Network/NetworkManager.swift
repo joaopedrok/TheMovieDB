@@ -2,6 +2,7 @@ import Foundation
 
 protocol URLSessionProtocol {
     func dataTask(with urlRequest: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
 }
 
 extension URLSession: URLSessionProtocol {}
@@ -41,13 +42,11 @@ extension NetworkManager: DataFetcher {
         guard let networkConfiguration = networkConfiguration,
               let queueAsyncExecutor = queueAsyncExecutor,
               let session = session else {
-            completion(.failure(.configError))
-            return
+                  fatalError(NetworkLayerError.configError.errorMessage)            
         }
         
         guard let url = URL(string: networkConfiguration.baseUrl ?? "") else {
-            completion(.failure(.baseURLError))
-            return
+            fatalError(NetworkLayerError.baseURLError.errorMessage)
         }
             
         let urlRequest = request.urlRequest(baseURL: url)
@@ -56,6 +55,14 @@ extension NetworkManager: DataFetcher {
             if error != nil {
                 queueAsyncExecutor.execute {
                     completion(.failure(.generalError))
+                }
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse,
+               !(200...300).contains(httpResponse.statusCode) {
+                queueAsyncExecutor.execute {
+                    completion(.failure(.invalidStatusCode(httpResponse.statusCode)))
                 }
                 return
             }

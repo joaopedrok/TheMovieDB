@@ -12,6 +12,11 @@
 		CF0015F12B4CDEC800563372 /* Nimble-Snapshots in Frameworks */ = {isa = PBXBuildFile; productRef = CF0015F02B4CDEC800563372 /* Nimble-Snapshots */; };
 		CF0015F52B4CE1FF00563372 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0015F42B4CE1FF00563372 /* UIView+AutoLayout.swift */; };
 		CF0015F92B4CE67600563372 /* UIViewAutoLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0015F82B4CE67600563372 /* UIViewAutoLayoutTests.swift */; };
+		CF0015FB2B4E036300563372 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0015FA2B4E036300563372 /* ImageDownloader.swift */; };
+		CF0015FE2B4E064C00563372 /* UIImage+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0015FD2B4E064C00563372 /* UIImage+Stub.swift */; };
+		CF0016002B4E072200563372 /* ImageDownloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0015FF2B4E072200563372 /* ImageDownloadTests.swift */; };
+		CF0016022B4E085B00563372 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0016012B4E085B00563372 /* ImageCache.swift */; };
+		CF0016042B4E093400563372 /* ImageCacheMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0016032B4E093400563372 /* ImageCacheMock.swift */; };
 		CFD1D8082B4C90430038C119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8072B4C90430038C119 /* AppDelegate.swift */; };
 		CFD1D80A2B4C90430038C119 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8092B4C90430038C119 /* SceneDelegate.swift */; };
 		CFD1D80C2B4C90430038C119 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D80B2B4C90430038C119 /* MovieListViewController.swift */; };
@@ -58,6 +63,11 @@
 /* Begin PBXFileReference section */
 		CF0015F42B4CE1FF00563372 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		CF0015F82B4CE67600563372 /* UIViewAutoLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAutoLayoutTests.swift; sourceTree = "<group>"; };
+		CF0015FA2B4E036300563372 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		CF0015FD2B4E064C00563372 /* UIImage+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Stub.swift"; sourceTree = "<group>"; };
+		CF0015FF2B4E072200563372 /* ImageDownloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadTests.swift; sourceTree = "<group>"; };
+		CF0016012B4E085B00563372 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		CF0016032B4E093400563372 /* ImageCacheMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheMock.swift; sourceTree = "<group>"; };
 		CFD1D8042B4C90430038C119 /* TheMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD1D8072B4C90430038C119 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFD1D8092B4C90430038C119 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +154,14 @@
 				CF0015F82B4CE67600563372 /* UIViewAutoLayoutTests.swift */,
 			);
 			path = Constraints;
+			sourceTree = "<group>";
+		};
+		CF0015FC2B4E063C00563372 /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+				CF0015FD2B4E064C00563372 /* UIImage+Stub.swift */,
+			);
+			path = Stub;
 			sourceTree = "<group>";
 		};
 		CFD1D7FB2B4C90430038C119 = {
@@ -261,6 +279,8 @@
 				CFD1D8632B4C9C480038C119 /* NetworkConfig.swift */,
 				CFD1D8652B4C9F180038C119 /* MainThreadExecutor.swift */,
 				CFD1D87F2B4CAFAF0038C119 /* NetworLayerError.swift */,
+				CF0015FA2B4E036300563372 /* ImageDownloader.swift */,
+				CF0016012B4E085B00563372 /* ImageCache.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -295,6 +315,7 @@
 				CFD1D8672B4CA3E20038C119 /* Doubles */,
 				CFD1D8752B4CA8690038C119 /* NetworkManagerTests.swift */,
 				CFD1D8892B4CCB700038C119 /* NetworkLayerErrorTests.swift */,
+				CF0015FF2B4E072200563372 /* ImageDownloadTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -339,6 +360,7 @@
 		CFD1D8722B4CA7910038C119 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				CF0016032B4E093400563372 /* ImageCacheMock.swift */,
 				CFD1D8682B4CA4060038C119 /* URLSessionMock.swift */,
 				CFD1D87D2B4CAD7B0038C119 /* ObjectMock.swift */,
 			);
@@ -357,6 +379,7 @@
 		CFD1D88B2B4CCCB70038C119 /* UIKitDoubles */ = {
 			isa = PBXGroup;
 			children = (
+				CF0015FC2B4E063C00563372 /* Stub */,
 				CFD1D8A12B4CD5C50038C119 /* Spy */,
 			);
 			path = UIKitDoubles;
@@ -544,8 +567,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0016022B4E085B00563372 /* ImageCache.swift in Sources */,
 				CFD1D8902B4CCD1F0038C119 /* AppCoordinator.swift in Sources */,
 				CFD1D84A2B4C939E0038C119 /* NetworkManager.swift in Sources */,
+				CF0015FB2B4E036300563372 /* ImageDownloader.swift in Sources */,
 				CFD1D85F2B4C98A00038C119 /* HttpRequest.swift in Sources */,
 				CFD1D8642B4C9C480038C119 /* NetworkConfig.swift in Sources */,
 				CFD1D80C2B4C90430038C119 /* MovieListViewController.swift in Sources */,
@@ -573,9 +598,12 @@
 				CFD1D87E2B4CAD7B0038C119 /* ObjectMock.swift in Sources */,
 				CFD1D8942B4CCDDF0038C119 /* BaseCoordinatorTests.swift in Sources */,
 				CFD1D88A2B4CCB700038C119 /* NetworkLayerErrorTests.swift in Sources */,
+				CF0015FE2B4E064C00563372 /* UIImage+Stub.swift in Sources */,
 				CF0015F92B4CE67600563372 /* UIViewAutoLayoutTests.swift in Sources */,
 				CFD1D86B2B4CA4750038C119 /* URLSessionDataTaskSpy.swift in Sources */,
 				CFD1D8A02B4CD49F0038C119 /* UINavigationControllerSpy.swift in Sources */,
+				CF0016042B4E093400563372 /* ImageCacheMock.swift in Sources */,
+				CF0016002B4E072200563372 /* ImageDownloadTests.swift in Sources */,
 				CFD1D8762B4CA8690038C119 /* NetworkManagerTests.swift in Sources */,
 				CFD1D8742B4CA7B60038C119 /* URLResponse+Stub.swift in Sources */,
 				CFD1D86F2B4CA5F70038C119 /* QueueAsyncExecutorSpy.swift in Sources */,

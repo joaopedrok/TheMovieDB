@@ -3,3 +3,4 @@
 "baseURLError" = "A URL base não é uma URL válida";
 "generalError" = "Erro de chamada";
 "parseError" = "Erro de parse ao transformar o objeto da response no objeto requerido";
+"invalidStatusCode" = "A API retornou um status code indesejado";
