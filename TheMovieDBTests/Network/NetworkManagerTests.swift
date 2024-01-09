@@ -70,30 +70,90 @@ final class NetworkManagerSpec: QuickSpec {
                 }
             }
 
-            context("when networkConfiguration and baseUrl are set but queueAsyncExecutor is not set") {
-                it("has return a failure result with the appropriate error message") {
-
-                }
-            }
-
-            context("when networkConfiguration, baseUrl, and queueAsyncExecutor are set but session is not set") {
-                it("has return a failure result with the appropriate error message") {
-                }
-            }
-
             context("when networkConfiguration, baseUrl, queueAsyncExecutor, and session are all set") {
-                it("has perform the data task and call the completion block with a success result") {
+                beforeEach {
+                    sut.config(session: sessionMock,
+                               networkConfiguration: networkAPIConfigurationStub,
+                               queueAsyncExecutor: queueAsyncExecutorSpy)
+                }
+                
+                context("when perform the data task call the completion block with a success result") {
+                    var resultSent: Result<ObjectMock, NetworkLayerError>?
+                    
+                    beforeEach {
+                        sessionMock.urlResponse = URLResponse.stub()
+                        sessionMock.data = "{}".data(using: .utf8)
+                        
+                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { result in
+                            resultSent = result
+                        }
+                    }
+                    
+                    it("has to return a success result with the approprieted object") {
+                        if case let .success(object) = resultSent {
+                            expect(object).toNot(beNil())
+                        } else {
+                            fail()
+                        }
+                    }
                 }
 
-                it("has perform the data task and call the completion block with a failure result if an error occurs") {
+                context("when perform the data task and call completion block with a failure result if an error occurs") {
+                    var resultSent: Result<ObjectMock, NetworkLayerError>?
+                    
+                    beforeEach {
+                        sessionMock.error = NSError(domain: "", code: 0, userInfo: nil)
+
+                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { result in
+                            resultSent = result
+                        }
+                    }
+                    
+                    it("has to return a failure result with the appropriate error") {
+                        if case let .failure(error) = resultSent {
+                            expect(error).to(equal(.generalError))
+                        } else {
+                            fail()
+                        }
+                    }
                 }
 
-                it("has perform the data task and call the completion block with a failure result if data is empty") {
-
+                context("when perform the data task and call the completion block with a failure result if data is empty") {
+                    var resultSent: Result<ObjectMock, NetworkLayerError>?
+                    
+                    beforeEach {
+                        sessionMock.urlResponse = URLResponse.stub()
+                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { result in
+                            resultSent = result
+                        }
+                    }
+                    
+                    it("has to return a failure result with the appropriate error") {
+                        if case let .failure(error) = resultSent {
+                            expect(error).to(equal(.dataError))
+                        } else {
+                            fail()
+                        }
+                    }
                 }
 
-                it("has perform the data task and call the completion block with a failure result if decoding fails") {
-
+                context("when perform the data task and call the completion block with a failure result if decoding fails") {
+                    var resultSent: Result<ObjectMock, NetworkLayerError>?
+                    beforeEach {
+                        sessionMock.urlResponse = URLResponse.stub()
+                        sessionMock.data = "".data(using: .utf8)
+                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { result in
+                            resultSent = result
+                        }
+                    }
+                    
+                    it("has to return a failure result with the appropriate error") {
+                        if case let .failure(error) = resultSent {
+                            expect(error).to(equal(.parseError))
+                        } else {
+                            fail()
+                        }
+                    }
                 }
             }
         }

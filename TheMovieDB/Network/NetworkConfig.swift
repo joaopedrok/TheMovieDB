@@ -1,6 +1,5 @@
 import Foundation
 
-
 protocol NetworkAPIConfiguration {
     var apiKey: String? { get }
     var baseUrl: String? { get }

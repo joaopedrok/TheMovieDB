@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0015ED2B4CDEC800563372 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = CF0015EC2B4CDEC800563372 /* Nimble */; };
+		CF0015EF2B4CDEC800563372 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = CF0015EE2B4CDEC800563372 /* Quick */; };
+		CF0015F12B4CDEC800563372 /* Nimble-Snapshots in Frameworks */ = {isa = PBXBuildFile; productRef = CF0015F02B4CDEC800563372 /* Nimble-Snapshots */; };
 		CFD1D8082B4C90430038C119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8072B4C90430038C119 /* AppDelegate.swift */; };
 		CFD1D80A2B4C90430038C119 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8092B4C90430038C119 /* SceneDelegate.swift */; };
 		CFD1D80C2B4C90430038C119 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D80B2B4C90430038C119 /* MovieListViewController.swift */; };
@@ -14,9 +17,6 @@
 		CFD1D8142B4C90450038C119 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD1D8122B4C90450038C119 /* LaunchScreen.storyboard */; };
 		CFD1D8482B4C93340038C119 /* MovieListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8472B4C93340038C119 /* MovieListViewControllerTests.swift */; };
 		CFD1D84A2B4C939E0038C119 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8492B4C939E0038C119 /* NetworkManager.swift */; };
-		CFD1D8562B4C971C0038C119 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = CFD1D8552B4C971C0038C119 /* Quick */; };
-		CFD1D8592B4C97F00038C119 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = CFD1D8582B4C97F00038C119 /* Nimble */; };
-		CFD1D85C2B4C982B0038C119 /* Nimble-Snapshots in Frameworks */ = {isa = PBXBuildFile; productRef = CFD1D85B2B4C982B0038C119 /* Nimble-Snapshots */; };
 		CFD1D85F2B4C98A00038C119 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D85E2B4C98A00038C119 /* HttpRequest.swift */; };
 		CFD1D8622B4C9B470038C119 /* TheMovieDB-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CFD1D8612B4C9B470038C119 /* TheMovieDB-release.xcconfig */; };
 		CFD1D8642B4C9C480038C119 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8632B4C9C480038C119 /* NetworkConfig.swift */; };
@@ -32,6 +32,15 @@
 		CFD1D8802B4CAFAF0038C119 /* NetworLayerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D87F2B4CAFAF0038C119 /* NetworLayerError.swift */; };
 		CFD1D8832B4CB0730038C119 /* NetworkStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFD1D8822B4CB0730038C119 /* NetworkStrings.strings */; };
 		CFD1D8872B4CB1120038C119 /* NetworkStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8862B4CB1120038C119 /* NetworkStrings.swift */; };
+		CFD1D88A2B4CCB700038C119 /* NetworkLayerErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8892B4CCB700038C119 /* NetworkLayerErrorTests.swift */; };
+		CFD1D88E2B4CCCE80038C119 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D88D2B4CCCE80038C119 /* BaseCoordinator.swift */; };
+		CFD1D8902B4CCD1F0038C119 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D88F2B4CCD1F0038C119 /* AppCoordinator.swift */; };
+		CFD1D8942B4CCDDF0038C119 /* BaseCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8932B4CCDDF0038C119 /* BaseCoordinatorTests.swift */; };
+		CFD1D8972B4CCDEB0038C119 /* CoordinatorFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8962B4CCDEB0038C119 /* CoordinatorFake.swift */; };
+		CFD1D89B2B4CD0AE0038C119 /* MovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D89A2B4CD0AE0038C119 /* MovieCoordinator.swift */; };
+		CFD1D89E2B4CD48E0038C119 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D89D2B4CD48E0038C119 /* AppCoordinatorTests.swift */; };
+		CFD1D8A02B4CD49F0038C119 /* UINavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D89F2B4CD49F0038C119 /* UINavigationControllerSpy.swift */; };
+		CFD1D8A32B4CD8EC0038C119 /* UIWindowSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8A22B4CD8EC0038C119 /* UIWindowSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +79,15 @@
 		CFD1D87F2B4CAFAF0038C119 /* NetworLayerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworLayerError.swift; sourceTree = "<group>"; };
 		CFD1D8822B4CB0730038C119 /* NetworkStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = NetworkStrings.strings; sourceTree = "<group>"; };
 		CFD1D8862B4CB1120038C119 /* NetworkStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStrings.swift; sourceTree = "<group>"; };
+		CFD1D8892B4CCB700038C119 /* NetworkLayerErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerErrorTests.swift; sourceTree = "<group>"; };
+		CFD1D88D2B4CCCE80038C119 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		CFD1D88F2B4CCD1F0038C119 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CFD1D8932B4CCDDF0038C119 /* BaseCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinatorTests.swift; sourceTree = "<group>"; };
+		CFD1D8962B4CCDEB0038C119 /* CoordinatorFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFake.swift; sourceTree = "<group>"; };
+		CFD1D89A2B4CD0AE0038C119 /* MovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCoordinator.swift; sourceTree = "<group>"; };
+		CFD1D89D2B4CD48E0038C119 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		CFD1D89F2B4CD49F0038C119 /* UINavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerSpy.swift; sourceTree = "<group>"; };
+		CFD1D8A22B4CD8EC0038C119 /* UIWindowSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD1D8562B4C971C0038C119 /* Quick in Frameworks */,
-				CFD1D8592B4C97F00038C119 /* Nimble in Frameworks */,
-				CFD1D85C2B4C982B0038C119 /* Nimble-Snapshots in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,18 +102,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0015EF2B4CDEC800563372 /* Quick in Frameworks */,
+				CF0015ED2B4CDEC800563372 /* Nimble in Frameworks */,
+				CF0015F12B4CDEC800563372 /* Nimble-Snapshots in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF0015EB2B4CDEC800563372 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CFD1D7FB2B4C90430038C119 = {
 			isa = PBXGroup;
 			children = (
 				CFD1D8062B4C90430038C119 /* TheMovieDB */,
 				CFD1D81D2B4C90450038C119 /* TheMovieDBTests */,
 				CFD1D8052B4C90430038C119 /* Products */,
+				CF0015EB2B4CDEC800563372 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +154,9 @@
 		CFD1D81D2B4C90450038C119 /* TheMovieDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				CFD1D89C2B4CD4210038C119 /* App */,
+				CFD1D8912B4CCD260038C119 /* Common */,
+				CFD1D88B2B4CCCB70038C119 /* UIKitDoubles */,
 				CFD1D85D2B4C98400038C119 /* Network */,
 				CFD1D8442B4C93110038C119 /* Scenes */,
 			);
@@ -139,6 +168,7 @@
 			children = (
 				CFD1D8092B4C90430038C119 /* SceneDelegate.swift */,
 				CFD1D8072B4C90430038C119 /* AppDelegate.swift */,
+				CFD1D88F2B4CCD1F0038C119 /* AppCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -156,7 +186,7 @@
 		CFD1D8392B4C90EA0038C119 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CFD1D83A2B4C90F80038C119 /* MovieList */,
+				CFD1D8982B4CD07D0038C119 /* Movies */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -187,6 +217,7 @@
 		CFD1D83D2B4C91950038C119 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CFD1D88C2B4CCCDA0038C119 /* Coordinator */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -207,7 +238,7 @@
 		CFD1D8442B4C93110038C119 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CFD1D8452B4C93170038C119 /* MovieList */,
+				CFD1D8992B4CD08C0038C119 /* Movies */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -233,6 +264,7 @@
 			children = (
 				CFD1D8672B4CA3E20038C119 /* Doubles */,
 				CFD1D8752B4CA8690038C119 /* NetworkManagerTests.swift */,
+				CFD1D8892B4CCB700038C119 /* NetworkLayerErrorTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -292,6 +324,81 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		CFD1D88B2B4CCCB70038C119 /* UIKitDoubles */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D8A12B4CD5C50038C119 /* Spy */,
+			);
+			path = UIKitDoubles;
+			sourceTree = "<group>";
+		};
+		CFD1D88C2B4CCCDA0038C119 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D88D2B4CCCE80038C119 /* BaseCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CFD1D8912B4CCD260038C119 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D8922B4CCDD50038C119 /* Coordinator */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CFD1D8922B4CCDD50038C119 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D8952B4CCDE30038C119 /* Doubles */,
+				CFD1D8932B4CCDDF0038C119 /* BaseCoordinatorTests.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CFD1D8952B4CCDE30038C119 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D8962B4CCDEB0038C119 /* CoordinatorFake.swift */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		CFD1D8982B4CD07D0038C119 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D83A2B4C90F80038C119 /* MovieList */,
+				CFD1D89A2B4CD0AE0038C119 /* MovieCoordinator.swift */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		CFD1D8992B4CD08C0038C119 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D8452B4C93170038C119 /* MovieList */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		CFD1D89C2B4CD4210038C119 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D89D2B4CD48E0038C119 /* AppCoordinatorTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CFD1D8A12B4CD5C50038C119 /* Spy */ = {
+			isa = PBXGroup;
+			children = (
+				CFD1D89F2B4CD49F0038C119 /* UINavigationControllerSpy.swift */,
+				CFD1D8A22B4CD8EC0038C119 /* UIWindowSpy.swift */,
+			);
+			path = Spy;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,9 +416,6 @@
 			);
 			name = TheMovieDB;
 			packageProductDependencies = (
-				CFD1D8552B4C971C0038C119 /* Quick */,
-				CFD1D8582B4C97F00038C119 /* Nimble */,
-				CFD1D85B2B4C982B0038C119 /* Nimble-Snapshots */,
 			);
 			productName = TheMovieDB;
 			productReference = CFD1D8042B4C90430038C119 /* TheMovieDB.app */;
@@ -331,6 +435,11 @@
 				CFD1D81C2B4C90450038C119 /* PBXTargetDependency */,
 			);
 			name = TheMovieDBTests;
+			packageProductDependencies = (
+				CF0015EC2B4CDEC800563372 /* Nimble */,
+				CF0015EE2B4CDEC800563372 /* Quick */,
+				CF0015F02B4CDEC800563372 /* Nimble-Snapshots */,
+			);
 			productName = TheMovieDBTests;
 			productReference = CFD1D81A2B4C90450038C119 /* TheMovieDBTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -365,9 +474,9 @@
 			);
 			mainGroup = CFD1D7FB2B4C90430038C119;
 			packageReferences = (
-				CFD1D8542B4C971C0038C119 /* XCRemoteSwiftPackageReference "Quick" */,
-				CFD1D8572B4C97F00038C119 /* XCRemoteSwiftPackageReference "Nimble" */,
-				CFD1D85A2B4C982B0038C119 /* XCRemoteSwiftPackageReference "Nimble-Snapshots" */,
+				CF0015E22B4CDE8700563372 /* XCRemoteSwiftPackageReference "Nimble" */,
+				CF0015E52B4CDE9500563372 /* XCRemoteSwiftPackageReference "Quick" */,
+				CF0015E82B4CDEC100563372 /* XCRemoteSwiftPackageReference "Nimble-Snapshots" */,
 			);
 			productRefGroup = CFD1D8052B4C90430038C119 /* Products */;
 			projectDirPath = "";
@@ -405,11 +514,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD1D8902B4CCD1F0038C119 /* AppCoordinator.swift in Sources */,
 				CFD1D84A2B4C939E0038C119 /* NetworkManager.swift in Sources */,
 				CFD1D85F2B4C98A00038C119 /* HttpRequest.swift in Sources */,
 				CFD1D8642B4C9C480038C119 /* NetworkConfig.swift in Sources */,
 				CFD1D80C2B4C90430038C119 /* MovieListViewController.swift in Sources */,
+				CFD1D89B2B4CD0AE0038C119 /* MovieCoordinator.swift in Sources */,
 				CFD1D8662B4C9F180038C119 /* MainThreadExecutor.swift in Sources */,
+				CFD1D88E2B4CCCE80038C119 /* BaseCoordinator.swift in Sources */,
 				CFD1D8872B4CB1120038C119 /* NetworkStrings.swift in Sources */,
 				CFD1D8082B4C90430038C119 /* AppDelegate.swift in Sources */,
 				CFD1D80A2B4C90430038C119 /* SceneDelegate.swift in Sources */,
@@ -422,14 +534,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD1D8482B4C93340038C119 /* MovieListViewControllerTests.swift in Sources */,
+				CFD1D8972B4CCDEB0038C119 /* CoordinatorFake.swift in Sources */,
 				CFD1D87C2B4CAC250038C119 /* HTTPRequest+Stub.swift in Sources */,
 				CFD1D8692B4CA4060038C119 /* URLSessionMock.swift in Sources */,
+				CFD1D89E2B4CD48E0038C119 /* AppCoordinatorTests.swift in Sources */,
 				CFD1D86D2B4CA55A0038C119 /* NetworkAPIConfigurationStub.swift in Sources */,
 				CFD1D87E2B4CAD7B0038C119 /* ObjectMock.swift in Sources */,
+				CFD1D8942B4CCDDF0038C119 /* BaseCoordinatorTests.swift in Sources */,
+				CFD1D88A2B4CCB700038C119 /* NetworkLayerErrorTests.swift in Sources */,
 				CFD1D86B2B4CA4750038C119 /* URLSessionDataTaskSpy.swift in Sources */,
+				CFD1D8A02B4CD49F0038C119 /* UINavigationControllerSpy.swift in Sources */,
 				CFD1D8762B4CA8690038C119 /* NetworkManagerTests.swift in Sources */,
 				CFD1D8742B4CA7B60038C119 /* URLResponse+Stub.swift in Sources */,
 				CFD1D86F2B4CA5F70038C119 /* QueueAsyncExecutorSpy.swift in Sources */,
+				CFD1D8A32B4CD8EC0038C119 /* UIWindowSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,15 +829,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CFD1D8542B4C971C0038C119 /* XCRemoteSwiftPackageReference "Quick" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Quick";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		CFD1D8572B4C97F00038C119 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+		CF0015E22B4CDE8700563372 /* XCRemoteSwiftPackageReference "Nimble" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Quick/Nimble.git";
 			requirement = {
@@ -727,7 +837,15 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		CFD1D85A2B4C982B0038C119 /* XCRemoteSwiftPackageReference "Nimble-Snapshots" */ = {
+		CF0015E52B4CDE9500563372 /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		CF0015E82B4CDEC100563372 /* XCRemoteSwiftPackageReference "Nimble-Snapshots" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ashfurrow/Nimble-Snapshots.git";
 			requirement = {
@@ -738,19 +856,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CFD1D8552B4C971C0038C119 /* Quick */ = {
+		CF0015EC2B4CDEC800563372 /* Nimble */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFD1D8542B4C971C0038C119 /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
-		};
-		CFD1D8582B4C97F00038C119 /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFD1D8572B4C97F00038C119 /* XCRemoteSwiftPackageReference "Nimble" */;
+			package = CF0015E22B4CDE8700563372 /* XCRemoteSwiftPackageReference "Nimble" */;
 			productName = Nimble;
 		};
-		CFD1D85B2B4C982B0038C119 /* Nimble-Snapshots */ = {
+		CF0015EE2B4CDEC800563372 /* Quick */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFD1D85A2B4C982B0038C119 /* XCRemoteSwiftPackageReference "Nimble-Snapshots" */;
+			package = CF0015E52B4CDE9500563372 /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+		CF0015F02B4CDEC800563372 /* Nimble-Snapshots */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF0015E82B4CDEC100563372 /* XCRemoteSwiftPackageReference "Nimble-Snapshots" */;
 			productName = "Nimble-Snapshots";
 		};
 /* End XCSwiftPackageProductDependency section */
