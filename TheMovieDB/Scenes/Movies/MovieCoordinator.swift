@@ -6,7 +6,9 @@ final class MovieCoordinator: BaseCoordinator {
     }
     
     private func showMovieListViewController() {
-        let viewController = MovieListViewController()
+        let presenter = MovieListPresenter()
+        let viewController = MovieListViewController(presenter: presenter)
+        presenter.viewController = viewController
         navigationController.pushViewController(viewController, animated: true)
     }
 }

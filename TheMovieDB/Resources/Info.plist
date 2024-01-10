@@ -20,8 +20,10 @@
 		</dict>
 	</dict>
 	<key>APIKey</key>
-<string>$(API_KEY)</string>
-<key>BaseURL</key>
-<string>$(BASE_URL)</string>
+	<string>$(API_KEY)</string>
+	<key>BaseURL</key>
+	<string>$(BASE_URL)</string>
+	<key>ImageURL</key>
+	<string>$(IMAGE_URL)</string>
 </dict>
 </plist>

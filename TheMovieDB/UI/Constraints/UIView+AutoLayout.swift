@@ -2,6 +2,15 @@ import UIKit
 
 extension UIView {
     @discardableResult
+    func under(to view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = topAnchor.constraint(equalTo: view.bottomAnchor, constant: offset)
+        constraint.isActive = true
+        return constraint
+    }
+
+    
+    @discardableResult
     func top(to view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = topAnchor.constraint(equalTo: view.topAnchor, constant: offset)
@@ -13,6 +22,14 @@ extension UIView {
     func bottom(to view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -offset)
+        constraint.isActive = true
+        return constraint
+    }
+    
+    @discardableResult
+    func bottomToSafeArea(of view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -offset)
         constraint.isActive = true
         return constraint
     }

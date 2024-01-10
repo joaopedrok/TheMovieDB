@@ -39,15 +39,20 @@ final class NetworkManager {
 extension NetworkManager: DataFetcher {
     func fetchData<T: Decodable>(with request: HTTPRequest, decodeType: T.Type, completion: @escaping (Result<T, NetworkLayerError>) -> Void) {
         
+        var request = request
+        
         guard let networkConfiguration = networkConfiguration,
               let queueAsyncExecutor = queueAsyncExecutor,
               let session = session else {
                   fatalError(NetworkLayerError.configError.errorMessage)            
         }
         
-        guard let url = URL(string: networkConfiguration.baseUrl ?? "") else {
+        guard let url = URL(string: networkConfiguration.baseUrl ?? ""),
+              let apiKey = networkConfiguration.apiKey else {
             fatalError(NetworkLayerError.baseURLError.errorMessage)
         }
+        
+        request.queryItems.append(URLQueryItem(name: "api_key", value: apiKey))
             
         let urlRequest = request.urlRequest(baseURL: url)
 
@@ -76,11 +81,14 @@ extension NetworkManager: DataFetcher {
             }
 
             do {
-                let decodedObject = try JSONDecoder().decode(T.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decodedObject = try decoder.decode(T.self, from: data)
                 queueAsyncExecutor.execute {
                     completion(.success(decodedObject))
                 }
             } catch {
+                print(error)
                 queueAsyncExecutor.execute {
                     completion(.failure(.parseError))
                 }

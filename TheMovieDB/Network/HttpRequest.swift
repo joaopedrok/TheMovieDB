@@ -9,7 +9,7 @@ struct HTTPRequest: Equatable {
     let path: String
     let method: HTTPMethod
     let headers: [String: String]
-    let queryItems: [URLQueryItem]
+    var queryItems: [URLQueryItem]
 
     init(path: String,
          method: HTTPMethod,

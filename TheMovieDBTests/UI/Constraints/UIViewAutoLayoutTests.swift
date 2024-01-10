@@ -6,6 +6,23 @@ import Nimble
 
 final class UIViewAutoLayoutTests: QuickSpec {
     override func spec() {
+        describe("under") {
+            it("has to set top and bottom constraints") {
+                let contentView = UIView()
+                let firstView = UIView()
+                let secondView = UIView()
+                contentView.addSubview(firstView)
+                contentView.addSubview(secondView)
+                
+                let constraint = firstView.under(to: secondView, offset: 10)
+
+                expect(constraint.constant).to(equal(10))
+                expect(constraint.isActive).to(beTrue())
+                expect(constraint.firstAnchor).to(equal(firstView.topAnchor))
+                expect(constraint.secondAnchor).to(equal(secondView.bottomAnchor))
+            }
+        }
+        
         describe("top") {
             it("has to set top constraints") {
                 let parentView = UIView()
@@ -63,6 +80,21 @@ final class UIViewAutoLayoutTests: QuickSpec {
                 expect(constraint.isActive).to(beTrue())
                 expect(constraint.firstAnchor).to(equal(childView.bottomAnchor))
                 expect(constraint.secondAnchor).to(equal(parentView.bottomAnchor))
+            }
+        }
+        
+        describe("bottomToSafeArea") {
+            it("has to set bottom safeArea constraints") {
+                let parentView = UIView()
+                let childView = UIView()
+                parentView.addSubview(childView)
+                
+                let constraint = childView.bottomToSafeArea(of: parentView, offset: 10)
+                
+                expect(constraint.isActive).to(beTrue())
+                expect(constraint.constant).to(equal(-10))
+                expect(constraint.firstAnchor).to(equal(childView.bottomAnchor))
+                expect(constraint.secondAnchor).to(equal(parentView.safeAreaLayoutGuide.bottomAnchor))
             }
         }
         
