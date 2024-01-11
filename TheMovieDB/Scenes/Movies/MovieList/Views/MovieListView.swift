@@ -26,7 +26,7 @@ final class MovieListView: UIView {
         return activityIndicator
     }()
 
-    private let movieListView = MovieListContentView()
+    private let movieListContentView = MovieListContentView()
     
     init() {
         super.init(frame: .zero)
@@ -48,7 +48,7 @@ final class MovieListView: UIView {
     private func buildViewHierarchy() {
         addSubview(errorView)
         addSubview(activityIndicator)
-        addSubview(movieListView)
+        addSubview(movieListContentView)
     }
     
     private func addConstraints() {
@@ -59,10 +59,10 @@ final class MovieListView: UIView {
         
         activityIndicator.center(in: self)
         
-        movieListView.topToSafeArea(of: self)
-        movieListView.left(to: self)
-        movieListView.right(to: self)
-        movieListView.bottomToSafeArea(of: self)
+        movieListContentView.topToSafeArea(of: self)
+        movieListContentView.left(to: self)
+        movieListContentView.right(to: self)
+        movieListContentView.bottomToSafeArea(of: self)
     }
     
     private func addEvents() {
@@ -70,7 +70,7 @@ final class MovieListView: UIView {
             self?.didTapTryAgain?()
         }
         
-        movieListView.didScrollToLoadingMoreMovies = { [weak self] in
+        movieListContentView.didScrollToLoadingMoreMovies = { [weak self] in
             self?.didScrollToLoadingMoreMovies?()            
         }
     }
@@ -79,23 +79,23 @@ final class MovieListView: UIView {
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
         errorView.isHidden = true
-        movieListView.isHidden = true
+        movieListContentView.isHidden = true
     }
     
     private func showErrorState(message: String) {
         activityIndicator.stopAnimating()
         errorView.isHidden = false
         activityIndicator.isHidden = true
-        movieListView.isHidden = true
+        movieListContentView.isHidden = true
         errorView.show(errorMessage: message)
     }
     
     private func showReadyState(movieItemList: [MovieListViewPresentation]) {
-        movieListView.show(movieItemList: movieItemList)
+        movieListContentView.show(movieItemList: movieItemList)
         activityIndicator.stopAnimating()
         errorView.isHidden = true
         activityIndicator.isHidden = true
-        movieListView.isHidden = false
+        movieListContentView.isHidden = false
     }
 }
 

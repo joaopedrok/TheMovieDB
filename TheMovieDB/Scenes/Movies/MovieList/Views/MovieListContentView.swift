@@ -4,7 +4,25 @@ final class MovieListContentView: UIView {
     
     var didScrollToLoadingMoreMovies: (() -> Void)?
     
-    private let collectionView: UICollectionView = {
+    private let collectionView: UICollectionView
+
+    private var movieListDataSource: MovieListDataSource?
+
+    private(set) var isLoadingMoreMovies = false
+    
+    init(collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())) {
+        self.collectionView = collectionView
+        super.init(frame: .zero)
+        configureCollectionView()
+        configureView()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let screenWidth = UIScreen.main.bounds.width
         let cellWidth = (screenWidth / 2) - 24
@@ -14,25 +32,9 @@ final class MovieListContentView: UIView {
         layout.minimumLineSpacing = 14
         layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.setCollectionViewLayout(layout, animated: true)
         
         collectionView.register(MovieListViewItemCell.self, forCellWithReuseIdentifier: "MovieListViewItemCell")
-        
-        return collectionView
-    }()
-    
-    private var movieListDataSource: MovieListDataSource?
-
-    private(set) var isLoadingMoreMovies = false
-    
-    init() {
-        super.init(frame: .zero)
-        configureView()
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     private func configureView() {
@@ -60,7 +62,6 @@ final class MovieListContentView: UIView {
         movieListDataSource = MovieListDataSource(movieItemList: movieItemList)
         collectionView.dataSource = movieListDataSource
         
-            
         let indexPaths = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
         
         collectionView.performBatchUpdates({

@@ -11,7 +11,7 @@ final class MovieListErrorViewTests: QuickSpec {
         
         beforeEach {
             sut = MovieListErrorView()
-            sut.frame = CGRect(x: 0, y: 0, width: 320, height: 568)
+            sut.frame = CGRect(x: 0, y: 0, width: 375, height: 667)
         }
         
         describe("show") {
