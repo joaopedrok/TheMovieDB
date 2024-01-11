@@ -23,7 +23,7 @@ final class MovieListViewItemCellTests: QuickSpec {
             }
             
             it("has to build the layout properly") {
-                expect(sut).to(haveValidSnapshot()())
+                expect(sut).to(haveValidSnapshot())
             }
             
             it("has to call downloadImage from imageDownload") {
