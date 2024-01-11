@@ -8,6 +8,8 @@ O projeto foi desenvolvido utilizando XCode 13.2.1 e com deployment target do iO
 
 Foi desenvolvido em Swift com apenas 3 bibliotecas externas, Quick, Nimble e Nimble_Snapshot integrados via Swift Package Manager.
 
+A API_KEY já está configurada no projeto no TheMovieDB-release.xcconfig, assim com a URL para download de imagens e a URL base. 
+
 ## Pontos de Melhoria
 
 Não existe nada incompleto, porém segue pontos de melhoria:
