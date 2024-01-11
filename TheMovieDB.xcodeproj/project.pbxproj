@@ -48,6 +48,8 @@
 		CF17CF062B4F8627009F1692 /* MovieListContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF052B4F8627009F1692 /* MovieListContentViewTests.swift */; };
 		CF17CF082B4F86A0009F1692 /* MovieListContentView+Mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF072B4F86A0009F1692 /* MovieListContentView+Mirror.swift */; };
 		CF17CF0B2B4F8C0E009F1692 /* UICollectionViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF0A2B4F8C0E009F1692 /* UICollectionViewMock.swift */; };
+		CF17CF0E2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF0D2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift */; };
+		CF17CF102B4F8F72009F1692 /* ImageDownloadSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF0F2B4F8F72009F1692 /* ImageDownloadSpy.swift */; };
 		CFD1D8082B4C90430038C119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8072B4C90430038C119 /* AppDelegate.swift */; };
 		CFD1D80A2B4C90430038C119 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8092B4C90430038C119 /* SceneDelegate.swift */; };
 		CFD1D80C2B4C90430038C119 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D80B2B4C90430038C119 /* MovieListViewController.swift */; };
@@ -130,6 +132,8 @@
 		CF17CF052B4F8627009F1692 /* MovieListContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListContentViewTests.swift; sourceTree = "<group>"; };
 		CF17CF072B4F86A0009F1692 /* MovieListContentView+Mirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieListContentView+Mirror.swift"; sourceTree = "<group>"; };
 		CF17CF0A2B4F8C0E009F1692 /* UICollectionViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewMock.swift; sourceTree = "<group>"; };
+		CF17CF0D2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewItemCellTests.swift; sourceTree = "<group>"; };
+		CF17CF0F2B4F8F72009F1692 /* ImageDownloadSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadSpy.swift; sourceTree = "<group>"; };
 		CFD1D8042B4C90430038C119 /* TheMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD1D8072B4C90430038C119 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFD1D8092B4C90430038C119 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -356,6 +360,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		CF17CF0C2B4F8EE2009F1692 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CF17CF0D2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		CFD1D7FB2B4C90430038C119 = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +521,7 @@
 		CFD1D8462B4C931D0038C119 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF17CF0C2B4F8EE2009F1692 /* Cells */,
 				CF00161F2B4E141700563372 /* MovieListErrorViewTests.swift */,
 				CF00162B2B4E1F8900563372 /* MovieListViewTests.swift */,
 				CF17CF052B4F8627009F1692 /* MovieListContentViewTests.swift */,
@@ -548,6 +561,7 @@
 		CFD1D8702B4CA7800038C119 /* Spy */ = {
 			isa = PBXGroup;
 			children = (
+				CF17CF0F2B4F8F72009F1692 /* ImageDownloadSpy.swift */,
 				CFD1D86A2B4CA4750038C119 /* URLSessionDataTaskSpy.swift */,
 				CFD1D86E2B4CA5F70038C119 /* QueueAsyncExecutorSpy.swift */,
 			);
@@ -830,6 +844,7 @@
 				CF00161E2B4E116600563372 /* UIView+DynamicHeight.swift in Sources */,
 				CF17CF002B4F7D8D009F1692 /* MovieListViewPresentation+Stub.swift in Sources */,
 				CF17CEF82B4F7983009F1692 /* MovieRepositorySpy.swift in Sources */,
+				CF17CF102B4F8F72009F1692 /* ImageDownloadSpy.swift in Sources */,
 				CF17CEF02B4F6CEA009F1692 /* MovieCoordinatorTests.swift in Sources */,
 				CF0016202B4E141700563372 /* MovieListErrorViewTests.swift in Sources */,
 				CFD1D8942B4CCDDF0038C119 /* BaseCoordinatorTests.swift in Sources */,
@@ -845,6 +860,7 @@
 				CFD1D86B2B4CA4750038C119 /* URLSessionDataTaskSpy.swift in Sources */,
 				CFD1D8A02B4CD49F0038C119 /* UINavigationControllerSpy.swift in Sources */,
 				CF0016042B4E093400563372 /* ImageCacheMock.swift in Sources */,
+				CF17CF0E2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift in Sources */,
 				CF0016002B4E072200563372 /* ImageDownloadTests.swift in Sources */,
 				CFD1D8762B4CA8690038C119 /* NetworkManagerTests.swift in Sources */,
 				CFD1D8742B4CA7B60038C119 /* URLResponse+Stub.swift in Sources */,
