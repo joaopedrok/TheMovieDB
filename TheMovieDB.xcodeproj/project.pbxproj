@@ -43,6 +43,8 @@
 		CF17CEFC2B4F7A9B009F1692 /* MovieListResponse+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CEFB2B4F7A9B009F1692 /* MovieListResponse+Stub.swift */; };
 		CF17CEFE2B4F7BFF009F1692 /* MovieListViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CEFD2B4F7BFF009F1692 /* MovieListViewControllerSpy.swift */; };
 		CF17CF002B4F7D8D009F1692 /* MovieListViewPresentation+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CEFF2B4F7D8D009F1692 /* MovieListViewPresentation+Stub.swift */; };
+		CF17CF022B4F8176009F1692 /* MovieListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF012B4F8176009F1692 /* MovieListViewSpy.swift */; };
+		CF17CF042B4F82B3009F1692 /* MovieListPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF032B4F82B3009F1692 /* MovieListPresenterSpy.swift */; };
 		CFD1D8082B4C90430038C119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8072B4C90430038C119 /* AppDelegate.swift */; };
 		CFD1D80A2B4C90430038C119 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8092B4C90430038C119 /* SceneDelegate.swift */; };
 		CFD1D80C2B4C90430038C119 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D80B2B4C90430038C119 /* MovieListViewController.swift */; };
@@ -120,6 +122,8 @@
 		CF17CEFB2B4F7A9B009F1692 /* MovieListResponse+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieListResponse+Stub.swift"; sourceTree = "<group>"; };
 		CF17CEFD2B4F7BFF009F1692 /* MovieListViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerSpy.swift; sourceTree = "<group>"; };
 		CF17CEFF2B4F7D8D009F1692 /* MovieListViewPresentation+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieListViewPresentation+Stub.swift"; sourceTree = "<group>"; };
+		CF17CF012B4F8176009F1692 /* MovieListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewSpy.swift; sourceTree = "<group>"; };
+		CF17CF032B4F82B3009F1692 /* MovieListPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListPresenterSpy.swift; sourceTree = "<group>"; };
 		CFD1D8042B4C90430038C119 /* TheMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD1D8072B4C90430038C119 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFD1D8092B4C90430038C119 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 			children = (
 				CF17CEFD2B4F7BFF009F1692 /* MovieListViewControllerSpy.swift */,
 				CF17CEF72B4F7983009F1692 /* MovieRepositorySpy.swift */,
+				CF17CF012B4F8176009F1692 /* MovieListViewSpy.swift */,
+				CF17CF032B4F82B3009F1692 /* MovieListPresenterSpy.swift */,
 			);
 			path = Spy;
 			sourceTree = "<group>";
@@ -799,8 +805,10 @@
 				CF17CEF22B4F789F009F1692 /* MovieListPresenterTests.swift in Sources */,
 				CF00162E2B4E1FD700563372 /* MovieListView+Mirror.swift in Sources */,
 				CFD1D8692B4CA4060038C119 /* URLSessionMock.swift in Sources */,
+				CF17CF022B4F8176009F1692 /* MovieListViewSpy.swift in Sources */,
 				CFD1D89E2B4CD48E0038C119 /* AppCoordinatorTests.swift in Sources */,
 				CFD1D86D2B4CA55A0038C119 /* NetworkAPIConfigurationStub.swift in Sources */,
+				CF17CF042B4F82B3009F1692 /* MovieListPresenterSpy.swift in Sources */,
 				CFD1D87E2B4CAD7B0038C119 /* ObjectMock.swift in Sources */,
 				CF00161E2B4E116600563372 /* UIView+DynamicHeight.swift in Sources */,
 				CF17CF002B4F7D8D009F1692 /* MovieListViewPresentation+Stub.swift in Sources */,
