@@ -50,6 +50,7 @@
 		CF17CF0B2B4F8C0E009F1692 /* UICollectionViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF0A2B4F8C0E009F1692 /* UICollectionViewMock.swift */; };
 		CF17CF0E2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF0D2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift */; };
 		CF17CF102B4F8F72009F1692 /* ImageDownloadSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF0F2B4F8F72009F1692 /* ImageDownloadSpy.swift */; };
+		CF17CF122B4F9156009F1692 /* NetworkManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17CF112B4F9156009F1692 /* NetworkManagerSpy.swift */; };
 		CFD1D8082B4C90430038C119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8072B4C90430038C119 /* AppDelegate.swift */; };
 		CFD1D80A2B4C90430038C119 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D8092B4C90430038C119 /* SceneDelegate.swift */; };
 		CFD1D80C2B4C90430038C119 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D80B2B4C90430038C119 /* MovieListViewController.swift */; };
@@ -134,6 +135,7 @@
 		CF17CF0A2B4F8C0E009F1692 /* UICollectionViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewMock.swift; sourceTree = "<group>"; };
 		CF17CF0D2B4F8EEA009F1692 /* MovieListViewItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewItemCellTests.swift; sourceTree = "<group>"; };
 		CF17CF0F2B4F8F72009F1692 /* ImageDownloadSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadSpy.swift; sourceTree = "<group>"; };
+		CF17CF112B4F9156009F1692 /* NetworkManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerSpy.swift; sourceTree = "<group>"; };
 		CFD1D8042B4C90430038C119 /* TheMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD1D8072B4C90430038C119 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFD1D8092B4C90430038C119 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				CF17CF0F2B4F8F72009F1692 /* ImageDownloadSpy.swift */,
 				CFD1D86A2B4CA4750038C119 /* URLSessionDataTaskSpy.swift */,
 				CFD1D86E2B4CA5F70038C119 /* QueueAsyncExecutorSpy.swift */,
+				CF17CF112B4F9156009F1692 /* NetworkManagerSpy.swift */,
 			);
 			path = Spy;
 			sourceTree = "<group>";
@@ -843,6 +846,7 @@
 				CFD1D87E2B4CAD7B0038C119 /* ObjectMock.swift in Sources */,
 				CF00161E2B4E116600563372 /* UIView+DynamicHeight.swift in Sources */,
 				CF17CF002B4F7D8D009F1692 /* MovieListViewPresentation+Stub.swift in Sources */,
+				CF17CF122B4F9156009F1692 /* NetworkManagerSpy.swift in Sources */,
 				CF17CEF82B4F7983009F1692 /* MovieRepositorySpy.swift in Sources */,
 				CF17CF102B4F8F72009F1692 /* ImageDownloadSpy.swift in Sources */,
 				CF17CEF02B4F6CEA009F1692 /* MovieCoordinatorTests.swift in Sources */,
