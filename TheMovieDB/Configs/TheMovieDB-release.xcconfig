@@ -1,4 +1,4 @@
 SLASH = /
 BASE_URL = https:$(SLASH)/api.themoviedb.org/3/
 API_KEY = b8f75ab5dbdc50669229965b8ddadeb2
-IMAGE_URL = http:$(SLASH)/image.tmdb.org/t/p/w500
+IMAGE_URL = https:$(SLASH)/image.tmdb.org/t/p/w500

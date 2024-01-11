@@ -34,6 +34,21 @@ final class MovieListViewTests: QuickSpec {
                     expect(sut).to(haveValidSnapshot())
                 }
             }
+            
+            context("when state is ready") {
+                beforeEach {
+                    let movieList = [
+                        MovieListViewPresentation(url: nil, title: "Teste"),
+                        MovieListViewPresentation(url: nil, title: "Teste 1"),
+                    ]
+                    
+                    sut.show(state: .ready(movieList))
+                }
+                
+                it("has to build the layout properly") {
+                    expect(sut).to(recordSnapshot())
+                }
+            }
         }
         
         describe("addEvents") {

@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ImageDownloadable {
-    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void)
+    func downloadImage(from url: URL?, completion: @escaping (UIImage?) -> Void)
 }
 
 final class ImageDownloader: ImageDownloadable {
@@ -21,7 +21,15 @@ final class ImageDownloader: ImageDownloadable {
         self.queue = queue
     }
     
-    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+    func downloadImage(from url: URL?, completion: @escaping (UIImage?) -> Void) {
+        guard let url = url else {
+            queue.execute {
+                completion(nil)
+            }
+
+            return
+        }
+        
         if let cachedImage = cache.object(forKey: url) {
             queue.execute {
                 completion(cachedImage)

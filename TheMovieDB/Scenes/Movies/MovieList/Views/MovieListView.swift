@@ -2,11 +2,13 @@ import UIKit
 
 protocol MovieListViewType where Self: UIView {
     var didTapTryAgain: (() -> Void)? { get set }
+    var didScrollToLoadingMoreMovies: (() -> Void)? { get set }
     func show(state: MovieListViewState)
 }
 
 final class MovieListView: UIView {
     var didTapTryAgain: (() -> Void)?
+    var didScrollToLoadingMoreMovies: (() -> Void)?
     
     private let errorView: MovieListErrorView = {
         let view = MovieListErrorView()
@@ -50,17 +52,26 @@ final class MovieListView: UIView {
     }
     
     private func addConstraints() {
-        errorView.top(to: self)
+        errorView.topToSafeArea(of: self)
         errorView.left(to: self)
         errorView.right(to: self)
         errorView.bottomToSafeArea(of: self)
         
         activityIndicator.center(in: self)
+        
+        movieListView.topToSafeArea(of: self)
+        movieListView.left(to: self)
+        movieListView.right(to: self)
+        movieListView.bottomToSafeArea(of: self)
     }
     
     private func addEvents() {
         errorView.didTapTryAgain = { [weak self] in
             self?.didTapTryAgain?()
+        }
+        
+        movieListView.didScrollToLoadingMoreMovies = { [weak self] in
+            self?.didScrollToLoadingMoreMovies?()            
         }
     }
     
@@ -79,7 +90,8 @@ final class MovieListView: UIView {
         errorView.show(errorMessage: message)
     }
     
-    private func showReadyState(presentation: MovieListViewPresentation) {
+    private func showReadyState(movieItemList: [MovieListViewPresentation]) {
+        movieListView.show(movieItemList: movieItemList)
         activityIndicator.stopAnimating()
         errorView.isHidden = true
         activityIndicator.isHidden = true
@@ -90,8 +102,8 @@ final class MovieListView: UIView {
 extension MovieListView: MovieListViewType {
     func show(state: MovieListViewState) {
         switch state {
-        case let .ready(presentation):
-            showReadyState(presentation: presentation)
+        case let .ready(movieItemList):
+            showReadyState(movieItemList: movieItemList)
         case let .error(message):
             showErrorState(message: message)
         case .loading:

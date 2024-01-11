@@ -20,45 +20,13 @@ final class NetworkManagerSpec: QuickSpec {
             
             sessionMock.dataTask = urlSessionDataTaskSpy
                 
-            sut = NetworkManager.shared
+            sut = NetworkManager.init(session: sessionMock,
+                                      networkConfiguration: networkAPIConfigurationStub,
+                                      queueAsyncExecutor: queueAsyncExecutorSpy)
         }
         
         describe("fetchData") {
-            context("when config was not called") {
-                it("has to throw an fatalError") {
-                    expect {
-                        sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { _ in }
-                    }.to(throwAssertion())
-                }
-            }
-            
-            context("when config is called") {
-                beforeEach {
-                    sut.config(session: sessionMock,
-                               networkConfiguration: networkAPIConfigurationStub,
-                               queueAsyncExecutor: queueAsyncExecutorSpy)
-                }
-                
-                context("when networkConfiguration is set but baseUrl is nil") {
-                    beforeEach {
-                        networkAPIConfigurationStub.baseUrlTest = nil
-                    }
-                    
-                    it("has to throw an fatalError") {
-                        expect {
-                            sut.fetchData(with: HTTPRequest.stub(), decodeType: ObjectMock.self) { _ in }
-                        }.to(throwAssertion())
-                    }
-                }
-            }
-
             context("when networkConfiguration, baseUrl, queueAsyncExecutor, and session are configured") {
-                beforeEach {
-                    sut.config(session: sessionMock,
-                               networkConfiguration: networkAPIConfigurationStub,
-                               queueAsyncExecutor: queueAsyncExecutorSpy)
-                }
-                
                 context("when perform the data task call the completion block with a success result") {
                     var resultSent: Result<ObjectMock, NetworkLayerError>?
                     
@@ -72,7 +40,7 @@ final class NetworkManagerSpec: QuickSpec {
                     }
                     
                     it("has to make the request with properly urlRequest") {
-                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                        expect(sessionMock.sentUrlRequest?.url?.absoluteString).to(equal("base_url/test?api_key=api_key"))
                     }
                     
                     it("has to return a success result with the approprieted object") {
@@ -104,7 +72,7 @@ final class NetworkManagerSpec: QuickSpec {
                     }
                     
                     it("has to make the request with properly urlRequest") {
-                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                        expect(sessionMock.sentUrlRequest?.url?.absoluteString).to(equal("base_url/test?api_key=api_key"))
                     }
                     
                     it("has to return a failure result with the properly error") {
@@ -135,7 +103,7 @@ final class NetworkManagerSpec: QuickSpec {
                     }
                     
                     it("has to make the request with properly urlRequest") {
-                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                        expect(sessionMock.sentUrlRequest?.url?.absoluteString).to(equal("base_url/test?api_key=api_key"))
                     }
                     
                     it("has to return a failure result with the properly error") {
@@ -166,7 +134,7 @@ final class NetworkManagerSpec: QuickSpec {
                     }
                     
                     it("has to make the request with properly urlRequest") {
-                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                        expect(sessionMock.sentUrlRequest?.url?.absoluteString).to(equal("base_url/test?api_key=api_key"))
                     }
                     
                     it("has to return a failure result with the properly error") {
@@ -198,7 +166,7 @@ final class NetworkManagerSpec: QuickSpec {
                     }
                     
                     it("has to make the request with properly urlRequest") {
-                        expect(sessionMock.sentUrlRequest).to(equal(HTTPRequest.stub().urlRequest(baseURL: URL(string: "base_url")!)))
+                        expect(sessionMock.sentUrlRequest?.url?.absoluteString).to(equal("base_url/test?api_key=api_key"))
                     }
                     
                     it("has to return a failure result with the properly error") {
@@ -218,10 +186,6 @@ final class NetworkManagerSpec: QuickSpec {
                     }
                 }
             }
-        }
-
-        afterEach {
-            sut.reset()
         }
     }
 }

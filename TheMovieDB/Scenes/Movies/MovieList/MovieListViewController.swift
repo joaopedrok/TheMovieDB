@@ -28,7 +28,18 @@ final class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = MovileListStrings.movieList
+        addEvents()
         presenter.loadMovies()
+    }
+    
+    private func addEvents() {
+        contentView.didTapTryAgain = { [weak self] in
+            self?.presenter.loadMovies()
+        }
+        
+        contentView.didScrollToLoadingMoreMovies = { [weak self] in
+            self?.presenter.loadNextPage()
+        }
     }
 }
 

@@ -23,6 +23,21 @@ final class UIViewAutoLayoutTests: QuickSpec {
             }
         }
         
+        describe("topToSafeArea") {
+            it("has to set bottom safeArea constraints") {
+                let parentView = UIView()
+                let childView = UIView()
+                parentView.addSubview(childView)
+                
+                let constraint = childView.topToSafeArea(of: parentView, offset: 10)
+                
+                expect(constraint.isActive).to(beTrue())
+                expect(constraint.constant).to(equal(10))
+                expect(constraint.firstAnchor).to(equal(childView.topAnchor))
+                expect(constraint.secondAnchor).to(equal(parentView.safeAreaLayoutGuide.topAnchor))
+            }
+        }
+
         describe("top") {
             it("has to set top constraints") {
                 let parentView = UIView()

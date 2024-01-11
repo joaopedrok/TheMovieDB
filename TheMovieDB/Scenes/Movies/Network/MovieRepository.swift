@@ -1,9 +1,8 @@
 import Foundation
 
 protocol MovieRepositoryType {
-    func fetchMovies(completion: @escaping (Result<MovieListResponse, NetworkLayerError>) -> Void)
+    func fetchMovies(page: Int, completion: @escaping (Result<MovieListResponse, NetworkLayerError>) -> Void)
 }
-
 
 final class MovieRepository {
     private let dataFetcher: DataFetcher
@@ -14,8 +13,9 @@ final class MovieRepository {
 }
 
 extension MovieRepository: MovieRepositoryType {
-    func fetchMovies(completion: @escaping (Result<MovieListResponse, NetworkLayerError>) -> Void) {
-        let request = HTTPRequest(path: "movie/popular", method: .get)
+    func fetchMovies(page: Int, completion: @escaping (Result<MovieListResponse, NetworkLayerError>) -> Void) {
+        var request = HTTPRequest(path: "movie/popular", method: .get)
+        request.queryItems.append(URLQueryItem(name: "page", value: String(page)))
         dataFetcher.fetchData(with: request, decodeType: MovieListResponse.self, completion: completion)
     }
 }

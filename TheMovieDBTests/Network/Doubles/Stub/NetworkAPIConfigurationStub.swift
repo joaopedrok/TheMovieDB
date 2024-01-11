@@ -6,6 +6,7 @@ final class NetworkAPIConfigurationStub: NetworkAPIConfiguration {
     
     var apiKeyTest: String? = "api_key"
     var baseUrlTest: String? = "base_url"
+    var imageUrlTest: String? = "image_url"
     
     var apiKey: String? {
         return apiKeyTest
@@ -13,5 +14,9 @@ final class NetworkAPIConfigurationStub: NetworkAPIConfiguration {
     
     var baseUrl: String? {
         return baseUrlTest
+    }
+    
+    var imageUrl: String? {
+        return imageUrlTest
     }
 }

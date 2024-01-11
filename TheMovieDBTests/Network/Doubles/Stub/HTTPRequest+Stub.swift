@@ -4,6 +4,6 @@ import Foundation
 
 extension HTTPRequest {
     static func stub() -> HTTPRequest {
-        return  HTTPRequest(path: "/test", method: .get)
+        return  HTTPRequest(path: "test", method: .get)
     }
 }

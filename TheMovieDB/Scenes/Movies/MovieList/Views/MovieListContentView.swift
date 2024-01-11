@@ -1,10 +1,18 @@
 import UIKit
 
 final class MovieListContentView: UIView {
+    
+    var didScrollToLoadingMoreMovies: (() -> Void)?
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 100, height: 100)
+        let screenWidth = UIScreen.main.bounds.width
+        let cellWidth = (screenWidth / 2) - 24
+        layout.itemSize = CGSize(width: cellWidth, height: 168)
+        
+        layout.minimumInteritemSpacing = 14
+        layout.minimumLineSpacing = 14
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
@@ -12,6 +20,10 @@ final class MovieListContentView: UIView {
         
         return collectionView
     }()
+    
+    private var movieListDataSource: MovieListDataSource?
+
+    private(set) var isLoadingMoreMovies = false
     
     init() {
         super.init(frame: .zero)
@@ -24,17 +36,48 @@ final class MovieListContentView: UIView {
     }
 
     private func configureView() {
-        backgroundColor = .white
+        collectionView.delegate = self
         buildViewHierarchy()
         addConstraints()
-        
     }
     
     private func buildViewHierarchy() {
-        
+        addSubview(collectionView)
     }
     
     private func addConstraints() {
+        collectionView.top(to: self)
+        collectionView.left(to: self)
+        collectionView.right(to: self)
+        collectionView.bottom(to: self)
+    }
+    
+    func show(movieItemList: [MovieListViewPresentation]) {
         
+        let startIndex = movieListDataSource == nil ? 0 : movieItemList.count
+        let endIndex = movieItemList.count
+
+        movieListDataSource = MovieListDataSource(movieItemList: movieItemList)
+        collectionView.dataSource = movieListDataSource
+        
+            
+        let indexPaths = (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+        
+        collectionView.performBatchUpdates({
+            self.collectionView.insertItems(at: indexPaths)
+        }, completion: { _ in
+            self.isLoadingMoreMovies = false
+        })
+    }
+}
+
+extension MovieListContentView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let numberOfMovies = movieListDataSource?.collectionView(collectionView, numberOfItemsInSection: 0) else { return }
+        
+        if indexPath.row == numberOfMovies - 1 && !isLoadingMoreMovies {
+            isLoadingMoreMovies = true
+            didScrollToLoadingMoreMovies?()
+        }
     }
 }

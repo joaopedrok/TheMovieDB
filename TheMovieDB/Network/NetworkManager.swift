@@ -12,27 +12,19 @@ protocol DataFetcher {
 }
 
 final class NetworkManager {
-    static let shared = NetworkManager()
+    static let shared = NetworkManager(session: URLSession.shared,
+                                       networkConfiguration: NetworkConfiguration.shared,
+                                       queueAsyncExecutor: MainThreadExecutor())
     
-    private var session: URLSessionProtocol?
-    private var networkConfiguration: NetworkAPIConfiguration?
-    private var queueAsyncExecutor: QueueAsyncExecutor?
+    private let session: URLSessionProtocol
+    private let networkConfiguration: NetworkAPIConfiguration
+    private let queueAsyncExecutor: QueueAsyncExecutor
 
-    private init() { }
-    
-    func config(session: URLSessionProtocol = URLSession.shared,
-                networkConfiguration:
-                NetworkAPIConfiguration = NetworkConfiguration.shared,
-                queueAsyncExecutor: QueueAsyncExecutor = MainThreadExecutor()) {
+    init(session: URLSessionProtocol, networkConfiguration:
+         NetworkAPIConfiguration, queueAsyncExecutor: QueueAsyncExecutor) {
         self.session = session
         self.networkConfiguration = networkConfiguration
         self.queueAsyncExecutor = queueAsyncExecutor
-    }
-    
-    func reset() {
-        session = nil
-        networkConfiguration = nil
-        queueAsyncExecutor = nil
     }
 }
 
@@ -40,13 +32,7 @@ extension NetworkManager: DataFetcher {
     func fetchData<T: Decodable>(with request: HTTPRequest, decodeType: T.Type, completion: @escaping (Result<T, NetworkLayerError>) -> Void) {
         
         var request = request
-        
-        guard let networkConfiguration = networkConfiguration,
-              let queueAsyncExecutor = queueAsyncExecutor,
-              let session = session else {
-                  fatalError(NetworkLayerError.configError.errorMessage)            
-        }
-        
+
         guard let url = URL(string: networkConfiguration.baseUrl ?? ""),
               let apiKey = networkConfiguration.apiKey else {
             fatalError(NetworkLayerError.baseURLError.errorMessage)
@@ -56,9 +42,9 @@ extension NetworkManager: DataFetcher {
             
         let urlRequest = request.urlRequest(baseURL: url)
 
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { [weak self] data, response, error in
             if error != nil {
-                queueAsyncExecutor.execute {
+                self?.queueAsyncExecutor.execute {
                     completion(.failure(.generalError))
                 }
                 return
@@ -66,14 +52,14 @@ extension NetworkManager: DataFetcher {
             
             if let httpResponse = response as? HTTPURLResponse,
                !(200...300).contains(httpResponse.statusCode) {
-                queueAsyncExecutor.execute {
+                self?.queueAsyncExecutor.execute {
                     completion(.failure(.invalidStatusCode(httpResponse.statusCode)))
                 }
                 return
             }
 
             guard let data = data else {
-                queueAsyncExecutor.execute {
+                self?.queueAsyncExecutor.execute {
                     completion(.failure(.dataError))
                 }
 
@@ -84,12 +70,11 @@ extension NetworkManager: DataFetcher {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let decodedObject = try decoder.decode(T.self, from: data)
-                queueAsyncExecutor.execute {
+                self?.queueAsyncExecutor.execute {
                     completion(.success(decodedObject))
                 }
             } catch {
-                print(error)
-                queueAsyncExecutor.execute {
+                self?.queueAsyncExecutor.execute {
                     completion(.failure(.parseError))
                 }
             }
